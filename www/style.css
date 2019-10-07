@@ -2,6 +2,15 @@ body{
     background-color:#f2cd96;
 }
 
-.fine-div{
+.container{
+    margin-right: auto; /* 1 */
+    margin-left:  auto; /* 1 */
+    max-width: 960px; /* 2 */
+    padding-right: 10px; /* 3 */
+    padding-left:  10px; /* 3 */
+    border: 1px solid black;
+}
+
+.form-input{
     border: 1px solid black;
 }
