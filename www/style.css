@@ -1,17 +1,31 @@
-body{
-    background-color:#00e2d7;
-}
-
 .container{
     max-width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
-    border: 1px solid black;
-   
+    margin-left: auto;   
+}
+@media (min-width: 768px){
+.container {
+    max-width: 720px;
 }
 
+.col {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    /* Should be removed. Only for demonstration */
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+form{
+    background-color: #ffff;
+}
 .form-input{
     border: 1px solid black;
 }
@@ -19,20 +33,22 @@ body{
 .input-field{
     padding: 0.25rem;
     border-radius: 4px;
+    font-size: 16px;
 }
 
 .input-field::placeholder{
- /* */
+ font-size: 18px;
 }
 
 .color{
-    padding: 0.25rem;
-    border: 2px solid #4CAF50;
+    padding: 0.45rem;
+    border: 2px solid #00e2d7;
     border-radius: 4px;
-    background-color: #4CAF50;
+    background-color: #00e2d7;
+    font-size: 16px;
 }
 .color:hover{
     transition: 0.4s;
-    background-color: red;
-    border: 2px solid red;
+    background-color: #008ffd;
+    border: 2px solid #008ffd;
 }
