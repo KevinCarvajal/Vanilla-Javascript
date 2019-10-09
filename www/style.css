@@ -1,16 +1,38 @@
 body{
-    background-color:#f2cd96;
+    background-color:#00e2d7;
 }
 
 .container{
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    max-width: 960px; /* 2 */
-    padding-right: 10px; /* 3 */
-    padding-left:  10px; /* 3 */
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
     border: 1px solid black;
+   
 }
 
 .form-input{
     border: 1px solid black;
+}
+
+.input-field{
+    padding: 0.25rem;
+    border-radius: 4px;
+}
+
+.input-field::placeholder{
+ /* */
+}
+
+.color{
+    padding: 0.25rem;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    background-color: #4CAF50;
+}
+.color:hover{
+    transition: 0.4s;
+    background-color: red;
+    border: 2px solid red;
 }
