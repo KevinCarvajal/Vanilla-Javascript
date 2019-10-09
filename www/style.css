@@ -5,15 +5,13 @@
     margin-right: auto;
     margin-left: auto;   
 }
-@media (min-width: 768px){
-.container {
-    max-width: 720px;
-}
+
 
 .col {
     float: left;
     width: 30%;
     padding: 10px;
+    text-align: center;
     /* Should be removed. Only for demonstration */
   }
 
@@ -33,6 +31,7 @@ form{
 .input-field{
     padding: 0.25rem;
     border-radius: 4px;
+    border-color: #000;
     font-size: 16px;
 }
 
