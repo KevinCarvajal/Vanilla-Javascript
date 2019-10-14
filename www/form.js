@@ -104,45 +104,56 @@ document.getElementById('save').onclick = function() {
     let save = document.getElementById('saving').value; 
     let save2 =  document.getElementById("saving2").value;
     let save3 = document.getElementById("saving3").value;
-    // if(input.value === "" ||
-    //    input2.value ==="" ||
-    //    input3.value === ""){
-    //     alert("Pls fill in ALL fields")
-    //     return false;
-    // }
+    
+    if(input.value === "" ||
+       input2.value ==="" ||
+       input3.value === ""){
+        alert("Please fill in all the input fields")
+        return false;
+    }
     
 
-    //create p elements if input is changed..
     if(input.value === input.value ||
     input2.value === input2.value ||
     input3.value === input3.value){
+        //create p elements if input is changed..
         let infoName =  document.createElement('p');
         infoName.setAttribute('class', 'Name');
+        infoName.setAttribute('id', 'myName');
         let infoPhone = document.createElement('p');
         infoPhone.setAttribute('class', 'Phone');
         let infoEmail = document.createElement('p');
         infoEmail.setAttribute('class', 'Email');
+        //Edit button
+        let infoEdit = document.createElement('button');
+        infoEdit.setAttribute('id', 'Edit');
+        infoEdit.innerHTML = 'Redigera';
 
+        //div inside contact.
         let infodiv = document.createElement('div')
         infodiv.setAttribute('class', 'contact-info')
         contactdiv.append(infodiv);
 
+        //div inside contact-info
         let testdiv = document.createElement('div')
-        testdiv.setAttribute('class', 'test')
+        testdiv.setAttribute('class', 'info')
         infodiv.append(testdiv);
 
-       
+       //type out the value that was written in input
         infoName.innerHTML = input.value;
         infoPhone.innerHTML = input2.value;
         infoEmail.innerHTML = input3.value;
 
-        testdiv.append(infoName,infoPhone,infoEmail)
-        console.log(infoName,infoPhone,infoEmail)
+        testdiv.append(infoName,infoPhone,infoEmail, infoEdit)
 
     }
-    
 
-    //create a p tag and insert the value of input
+    document.getElementById('Edit').onclick = function(){
+        // document.getElementById("myName").contentEditable = true;
+          console.log("The p element inside Contact-Info should be editable.");
+        event.preventDefault()
+    }   
+
     
     //alerting when button is pressed the values
     console.log("Name: " + save + " "+ "\n" + "Phone: " + save2 + "\n" + "Email: " + save3)

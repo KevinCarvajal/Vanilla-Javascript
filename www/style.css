@@ -9,8 +9,8 @@
 
 .col {
     float: left;
-    width: 30%;
-    padding: 10px;
+    width: 33.33%;
+    padding: 10px 0px;
     text-align: center;
     /* Should be removed. Only for demonstration */
   }
@@ -63,9 +63,12 @@ form{
 .contact-info{
     text-align: center;
     padding: 10px;
+}
+
+.info{
     border: 2px solid black;
 }
-.test:after{
+.info:after{
         content: "";
         display: table;
         clear: both;
@@ -73,5 +76,5 @@ form{
 
 .Name,.Phone, .Email{
     float: left;
-    width: 30%;
+    width: 33%;
 }
