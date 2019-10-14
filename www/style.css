@@ -1,16 +1,53 @@
-body{
-    background-color:#f2cd96;
-}
-
 .container{
-    margin-right: auto; /* 1 */
-    margin-left:  auto; /* 1 */
-    max-width: 960px; /* 2 */
-    padding-right: 10px; /* 3 */
-    padding-left:  10px; /* 3 */
-    border: 1px solid black;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;   
 }
 
+
+.col {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    /* Should be removed. Only for demonstration */
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+form{
+    background-color: #ffff;
+}
 .form-input{
     border: 1px solid black;
+}
+
+.input-field{
+    padding: 0.25rem;
+    border-radius: 4px;
+    border-color: #000;
+    font-size: 16px;
+}
+
+.input-field::placeholder{
+ font-size: 18px;
+}
+
+.color{
+    padding: 0.45rem;
+    border: 2px solid #00e2d7;
+    border-radius: 4px;
+    background-color: #00e2d7;
+    font-size: 16px;
+}
+.color:hover{
+    transition: 0.4s;
+    background-color: #008ffd;
+    border: 2px solid #008ffd;
 }
