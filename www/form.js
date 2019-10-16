@@ -1,48 +1,3 @@
-const [listen, unlisten] = (() => {
- 
-  let listeningOnType = {};
-  let listeners = [];
- 
-  function listen(eventType, cssSelector, func){
-    // Register a "listener"
-    let listener = {eventType, cssSelector, func};
-    listeners.push(listener);
-    // If no listener on window[eventType] register a 
-    // a real/raw js-listener
-    if(!listeningOnType[eventType]){
-      // add event listener for this type on the whole window
-      window.addEventListener(eventType, e => {
-        listeners
-          .filter(x => x.eventType === eventType)
-          .forEach(listener => {
-            if(e.target.closest(listener.cssSelector)){
-              listener.func(e);
-            }
-        });
-      });
-      listeningOnType[eventType] = true;
-    }
-    return listener;
-  }
- 
-  function unlisten(listener){
-    listeners.splice(listeners.indexOf(listener), 1);
-  }
- 
-  return [listen, unlisten];
- 
-})();
- 
-// We can listen
-let listener1 = listen('click', 'button', e => {
-  console.log('You clicked a button');
-});
- 
-// We can unlisten - try commenting in this line:
-// unlisten(listener1);
-
-//-------------------------
-
 //inside the form there is created input elements..
 //first input
 let input = document.createElement("input");
@@ -98,13 +53,12 @@ div2.append(input2)
 div3.append(input3)
 div4.append(button)
 
-
 //button click function, alerting for now..
 document.getElementById('save').onclick = function() {
-    let save = document.getElementById('saving').value; 
-    let save2 =  document.getElementById("saving2").value;
-    let save3 = document.getElementById("saving3").value;
-    
+   document.getElementById('saving').value; 
+    document.getElementById("saving2").value;
+    document.getElementById("saving3").value;
+
     if(input.value === "" ||
        input2.value ==="" ||
        input3.value === ""){
@@ -116,6 +70,11 @@ document.getElementById('save').onclick = function() {
     if(input.value === input.value ||
     input2.value === input2.value ||
     input3.value === input3.value){
+        
+        let contactdiv = document.createElement('div')
+        contactdiv.setAttribute ('class', 'contact')
+        body.append(contactdiv)
+
         //create p elements if input is changed..
         let infoName =  document.createElement('p');
         infoName.setAttribute('class', 'Name');
@@ -124,10 +83,17 @@ document.getElementById('save').onclick = function() {
         infoPhone.setAttribute('class', 'Phone');
         let infoEmail = document.createElement('p');
         infoEmail.setAttribute('class', 'Email');
+
+        
         //Edit button
         let infoEdit = document.createElement('button');
         infoEdit.setAttribute('id', 'Edit');
         infoEdit.innerHTML = 'Redigera';
+        
+        //Save button
+        let infoSave = document.createElement('button');
+        infoSave.setAttribute('id', 'Save');
+        infoSave.innerHTML = 'Spara';
 
         //div inside contact.
         let infodiv = document.createElement('div')
@@ -140,23 +106,73 @@ document.getElementById('save').onclick = function() {
         infodiv.append(testdiv);
 
        //type out the value that was written in input
-        infoName.innerHTML = input.value;
-        infoPhone.innerHTML = input2.value;
-        infoEmail.innerHTML = input3.value;
+        infoName.innerHTML = ["Name: " + input.value];
+        infoPhone.innerHTML = ["Phone: " + input2.value];
+        infoEmail.innerHTML =["Email: " + input3.value];
 
         testdiv.append(infoName,infoPhone,infoEmail, infoEdit)
 
+        const person = {
+            printIntroduction: function () {
+              console.log(` Name: ${this.name}\n Phone: ${this.phone} \n Email: ${this.email}`);
+            }
+          };
+        
+          const me = Object.create(person);
+          me.name = input.value;
+          me.phone = input2.value;
+          me.email = input3.value;
+          
+          me.printIntroduction();
+
+          if(!store.name, !store.phone, !store.email){
+            // This should only run once
+            // because on next page load there should
+            // be a saved values in the store
+            console.log('saving info');
+            store.name = input.value;
+            store.phone = input2.value;
+            store.email = input3.value;
+            store.save();
+          }
+           
+          console.log(store.name, store.phone, store.email)
+
+
+          //just testing
+          let input4 = document.createElement('input') ;
+          input4.setAttribute('id', 'Spara');
+
+          //edit button
+          document.getElementById('Edit').onclick = function(){
+            // document.getElementById("myName").contentEditable = true;
+
+                if(!store.name === false){
+                    infoName.innerHTML = "";
+                    console.log('edit')
+                    infoName.append(input4,infoSave)
+                }
+
+                //save edit button
+                document.getElementById('Save').onclick = function(){
+                    if(input4.value === ""){
+                        alert('fill in or intterupt')
+                        return false;
+                    }
+                    if(input4.value === input4.value){
+                        infoName.innerHTML = ["Name: " + input4.value]
+                        console.log('save')
+                    }
+                }
+
+            event.preventDefault()
+        }   
     }
 
-    document.getElementById('Edit').onclick = function(){
-        // document.getElementById("myName").contentEditable = true;
-          console.log("The p element inside Contact-Info should be editable.");
-        event.preventDefault()
-    }   
 
-    
+   
+
     //alerting when button is pressed the values
-    console.log("Name: " + save + " "+ "\n" + "Phone: " + save2 + "\n" + "Email: " + save3)
     event.preventDefault()
 }
 
