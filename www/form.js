@@ -4,14 +4,14 @@ let input = document.createElement("input");
 input.setAttribute("type", "text");
 input.setAttribute("class", "input-field");
 input.setAttribute("id", "saving");
-input.setAttribute("placeholder", "name");
+input.setAttribute("placeholder", "namn");
 
 //second input
 let input2 = document.createElement("input");
 input2.setAttribute("type", "text");
 input2.setAttribute("class", "input-field");
 input2.setAttribute("id", "saving2");
-input2.setAttribute("placeholder", "phone");
+input2.setAttribute("placeholder", "telefon");
 
 //third input
 let input3 = document.createElement("input");
@@ -51,27 +51,32 @@ div2.append(input2);
 div3.append(input3);
 div4.append(button);
 
-//button click function, alerting for now..
+//button click function.
 document.getElementById("save").onclick = function() {
+  //get values from input fields id
   document.getElementById("saving").value;
   document.getElementById("saving2").value;
   document.getElementById("saving3").value;
 
+  //if they are empty generate alert/false
   if (input.value === "" || input2.value === "" || input3.value === "") {
     alert("Please fill in all the input fields");
     return false;
   }
 
+  //if input values arent empty
+  //we create a new div below
   if (
     input.value === input.value ||
     input2.value === input2.value ||
     input3.value === input3.value
   ) {
+    //creating div
     let contactdiv = document.createElement("div");
     contactdiv.setAttribute("class", "contact");
     body.append(contactdiv);
 
-    //create p elements if input is changed..
+    //create p elements
     let infoName = document.createElement("p");
     infoName.setAttribute("class", "Name");
     infoName.setAttribute("id", "myName");
@@ -79,8 +84,6 @@ document.getElementById("save").onclick = function() {
     infoPhone.setAttribute("class", "Phone");
     let infoEmail = document.createElement("p");
     infoEmail.setAttribute("class", "Email");
-
-    event.preventDefault();
 
     //Edit button
     let infoEdit = document.createElement("button");
@@ -98,16 +101,16 @@ document.getElementById("save").onclick = function() {
     contactdiv.append(infodiv);
 
     //div inside contact-info
-    let testdiv = document.createElement("div");
-    testdiv.setAttribute("class", "info");
-    infodiv.append(testdiv);
+    let insidediv = document.createElement("div");
+    insidediv.setAttribute("class", "info");
+    infodiv.append(insidediv);
 
     //type out the value that was written in input
-    infoName.innerHTML = ["Name: " + input.value];
-    infoPhone.innerHTML = ["Phone: " + input2.value];
+    infoName.innerHTML = ["Namn: " + input.value];
+    infoPhone.innerHTML = ["Telefon: " + input2.value];
     infoEmail.innerHTML = ["Email: " + input3.value];
 
-    testdiv.append(infoName, infoPhone, infoEmail, infoEdit);
+    insidediv.append(infoName, infoPhone, infoEmail, infoEdit);
 
     const person = {
       printIntroduction: function() {

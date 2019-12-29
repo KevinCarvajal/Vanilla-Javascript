@@ -40,6 +40,10 @@ const [listen, unlisten] = (() => {
 let listener1 = listen("click", "button", e => {
   console.log("You clicked a button");
 });
+let listener2 = listen("click", "input", e => {
+  console.log("you clicked inside input field");
+});
 
 // We can unlisten - try commenting in these lines:
-// unlisten(listener1);
+unlisten(listener1);
+unlisten(listener2);
